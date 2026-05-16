@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=600, height=600, initial-scale=1.0, user-scalable=no">
+  <title>Weather Forecast</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- Home Screen: 5-Day Forecast List -->
+    <div id="home" class="screen">
+      <header class="header">
+        <h1>Weather</h1>
+        <span class="header-meta" id="location-label">Locating…</span>
+      </header>
+
+      <div class="content" id="home-content">
+        <div id="home-loading" class="loading-container">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Getting forecast…</div>
+        </div>
+
+        <div id="home-error" class="error-container hidden">
+          <div class="error-icon">⚠️</div>
+          <div class="error-message" id="home-error-msg">Failed to load forecast</div>
+        </div>
+
+        <div id="forecast-list" class="forecast-list hidden"></div>
+      </div>
+
+      <nav class="nav-bar">
+        <button class="nav-item focusable" data-action="refresh">↻ Refresh</button>
+      </nav>
+    </div>
+
+    <!-- Detail Screen: Selected Day -->
+    <div id="detail" class="screen hidden">
+      <header class="header">
+        <button class="back-btn focusable" data-action="back">&#8592;</button>
+        <h1 id="detail-day-name">Monday</h1>
+        <span class="header-meta" id="detail-date"></span>
+      </header>
+
+      <div class="content">
+        <div class="detail-hero">
+          <div class="detail-emoji" id="detail-emoji">☀️</div>
+          <div class="detail-temps">
+            <span class="temp-high" id="detail-high">--°</span>
+            <span class="temp-sep">/</span>
+            <span class="temp-low" id="detail-low">--°</span>
+          </div>
+          <div class="detail-desc" id="detail-desc">Clear sky</div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">💧</div>
+            <div class="stat-value" id="detail-precip">--%</div>
+            <div class="stat-label">Rain chance</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💨</div>
+            <div class="stat-value" id="detail-wind">-- km/h</div>
+            <div class="stat-label">Wind</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🔆</div>
+            <div class="stat-value" id="detail-uv">--</div>
+            <div class="stat-label">UV Index</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🌡️</div>
+            <div class="stat-value" id="detail-range">--°</div>
+            <div class="stat-label">Temp range</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav-bar">
+        <button class="nav-item focusable" id="btn-prev" data-action="prev-day">‹ Prev</button>
+        <button class="nav-item focusable primary" data-action="back">List</button>
+        <button class="nav-item focusable" id="btn-next" data-action="next-day">Next ›</button>
+      </nav>
+    </div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
